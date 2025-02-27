@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -30,6 +31,10 @@ public class Product {
 	inverseJoinColumns = @JoinColumn(name="category_id"))
 	private Set<Category> categories = new HashSet<>();
 	
+	@OneToMany(mappedBy = "id.product")
+	private Set<OrderItem> itens = new HashSet<>();
+	
+
 	public Product() {
 		
 	}
@@ -104,7 +109,15 @@ public class Product {
 		return Objects.hash(id);
 	}
 
-
+	public Set<Order> getOrders(){
+		Set<Order> set = new HashSet<>();
+		for(OrderItem x :itens) {
+			set.add(x.getOrder());
+		}
+		return set;
+	}
+	
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

@@ -48,7 +48,6 @@ public class Order {
 	}
 
 	public Order(Integer id, Instant moment, User client, OrderStatus orderStatus) {
-		super();
 		this.id = id;
 		this.moment = moment;
 		this.client = client;
@@ -66,6 +65,13 @@ public class Order {
 		
 	}
 
+	public Double getTotal() {
+		double sum = 0.0;
+		for(OrderItem x: itens) {
+			sum += x.getSubtotal();
+		}
+		return sum;
+	}
 	public Integer getId() {
 		return id;
 	}

@@ -10,7 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Embeddable
-public class OrdemItemPK {
+public class OrderItemPK {
 
 	@ManyToOne
 	@JoinColumn(name = "order_id")
@@ -49,7 +49,7 @@ public class OrdemItemPK {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		OrdemItemPK other = (OrdemItemPK) obj;
+		OrderItemPK other = (OrderItemPK) obj;
 		return Objects.equals(order, other.order) && Objects.equals(product, other.product);
 	}
 

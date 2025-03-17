@@ -18,7 +18,7 @@ public class Payment {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	private Instant moment;
 
 	//classe dependente
@@ -27,7 +27,7 @@ public class Payment {
 	@MapsId
 	private Order order;
 
-	public Payment(Long id, Instant moment, Order order) {
+	public Payment(Integer id, Instant moment, Order order) {
 		this.id = id;
 		this.moment = moment;
 		this.order = order;
@@ -36,13 +36,10 @@ public class Payment {
 	public Payment() {
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public Instant getMoment() {
 		return moment;
